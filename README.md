@@ -87,7 +87,7 @@ kafka-producer demo.fake_social_media --count 20
 kafka-producer demo.fake_social_media --continuous
 ```
 
-> [!NOTE]  **Topic Name**  
+> [!NOTE] 
 > It's crucial to use the topic name demo.fake_social_media as this is the topic for which Trino configuration is set. 
 > This can be found in the `trino/etc/kafka/demo.fake_social_media.json` and `trino/etc/catalog/kafka.properties files.
 
@@ -104,15 +104,17 @@ With data flowing into Kafka, let's see it in action:
 
 Time to query our data using Trino:
 
-1. **Access Trino:** Use the Trino CLI or SQL client with the following configuration : 
+1. **Access Trino:** Use the Trino CLI or SQL client with the following configuration:
 
-> **JDBC URL:** jdbc:trino://localhost:8080
-> **Username:** admin
-> **Password:** no password for this demo, you can give the field blank
-> **Driver Name:** Trino (You can download the Trino driver [here](https://repo1.maven.org/maven2/io/trino/trino-jdbc/433/trino-jdbc-433.jar) and read the Trino documentation about this driver [here](https://trino.io/docs/current/client/jdbc.html))
+   - **JDBC URL:** `jdbc:trino://localhost:8080`
+   - **Username:** `admin`
+   - **Password:** No password is required for this demo; leave the field blank.
+   - **Driver Name:** `Trino`. The Trino driver can be downloaded from [Trino's Driver Maven Repository](https://repo1.maven.org/maven2/io/trino/trino-jdbc/433/trino-jdbc-433.jar). 
+For more details about this driver, refer to the [Trino JDBC Documentation](https://trino.io/docs/current/client/jdbc.html).
 
-You can find help for configuring DBeaver [here](https://docs.starburst.io/clients/dbeaver.html)
-If you prefer to use the Trino CLI, you can find all the details [here](https://trino.io/docs/current/client/cli.html)
+For assistance in configuring DBeaver with Trino, consult the [DBeaver Configuration Guide](https://docs.starburst.io/clients/dbeaver.html).
+Additionally, if you prefer using the Trino CLI, detailed information is available in the [Trino CLI Documentation](https://trino.io/docs/current/client/cli.html).
+
 
 2. **Run a Basic Query:** Start with a simple select statement:
 
