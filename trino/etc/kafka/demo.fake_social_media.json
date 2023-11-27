@@ -1,0 +1,45 @@
+{
+    "tableName": "fake_social_media",
+    "schemaName": "demo",
+    "topicName": "demo.fake_social_media",
+    "key": {
+        "dataFormat": "raw",
+        "fields": []
+    },
+    "message": {
+        "dataFormat": "json",
+        "fields": [
+            {
+                "name": "username",
+                "mapping": "username",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "post_content",
+                "mapping": "post_content",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "likes",
+                "mapping": "likes",
+                "type": "INTEGER"
+            },
+            {
+                "name": "comments",
+                "mapping": "comments",
+                "type": "INTEGER"
+            },
+            {
+                "name": "shares",
+                "mapping": "shares",
+                "type": "INTEGER"
+            },
+            {
+                "name": "timestamp",
+                "mapping": "timestamp",
+                "type": "TIMESTAMP(3)",
+                "dataFormat": "iso8601"
+            }
+        ]
+    }
+}

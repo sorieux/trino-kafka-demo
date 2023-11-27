@@ -1,0 +1,57 @@
+version: '3'
+services:
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - '2181:2181'
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_ANONYMOUS_LOGIN: 'yes'
+
+
+  kafka:
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9092:9092'  # Port for internal connections within the Docker network
+      - '9093:9093'  # Port for external connections (from the host machine)
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,PLAINTEXT_HOST://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9093
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_BROKER_ID: 1
+    depends_on:
+      - zookeeper
+
+
+  trino:
+    image: 'trinodb/trino:433'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./trino/etc:/etc/trino
+
+
+  redpanda-console:
+    image: redpandadata/console:latest
+    ports:
+      - "8000:8080"
+    environment:
+      KAFKA_BROKERS: kafka:9092
+    depends_on:
+      - kafka
+      - zookeeper
+      - trino
+
+  postgres:
+    ports:
+      - "5432:5432"
+    image: postgres:11
+    environment:
+      POSTGRES_USER: trino
+      POSTGRES_PASSWORD: trino
+      POSTGRES_DB: postgres
+
+volumes:
+  postgres-redash-data:
