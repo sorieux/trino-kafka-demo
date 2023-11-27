@@ -158,6 +158,22 @@ Congratulations!
 You've just set up a fully functional demo showcasing the integration of Kafka, Trino, and PostgreSQL. 
 Now, you're ready to explore further, perhaps customizing the data streams or queries.
 
+## Useful Resources and Acknowledgments
+
+In the journey of creating this demo, several resources have been invaluable. 
+Whether you're looking to deepen your understanding or troubleshoot issues, the following links can be of great assistance:
+
+1. **Trino Documentation**: For comprehensive details on Trino's capabilities and configurations.
+   - [Trino Official Documentation](https://trino.io/docs/current/index.html)
+   - [Kafka connector tutorial](https://trino.io/docs/current/connector/kafka-tutorial.html)
+
+2. **Kafka and Zookeeper**: To understand more about data streaming and management.
+   - [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+   - [Apache Zookeeper Documentation](https://zookeeper.apache.org/doc/current/)
+
+3. **Faker Library for Python**: For generating fake data for your applications.
+   - [Faker on PyPI](https://pypi.org/project/Faker/)
+
 
 ## Contributing
 
